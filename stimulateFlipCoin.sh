@@ -7,24 +7,21 @@ echo -e
 headCount=0;
 tailCount=0;
 
-while [ $headCount -le 20 ] || [ $tailCount -le 20 ]
+while [ $headCount -lt 21 ] && [ $tailCount -lt 21 ]
 do
-	a=$((1+RANDOM%2))
+	a=$(( 1 + RANDOM % 2 ))
 	if [ $a -eq 1 ]
 	then
-		echo "Heads"
-		headCount=$(($headCount + 1))
-	elif [ $a -eq 2 ]
-	then
-		echo "Tails"
-		tailCount=$(($tailCount + 1))
+		((headCount++))
+	else
+		((tailCount++))
 	fi
 done
 
 echo "number of times head has won = $headCount"
 echo "number of times tail has won = $tailCount"
 
-if [ $headCount -eq 21 -a $tailCount ]
+if [ $headCount -eq 21 -a $tailCount -eq 21 ]
 then
 	echo "It is a tie!!!"
 elif [ $headCount -eq 21 ]
